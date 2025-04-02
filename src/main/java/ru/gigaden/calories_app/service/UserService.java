@@ -1,8 +1,8 @@
 package ru.gigaden.calories_app.service;
 
-import ru.gigaden.calories_app.dto.UserCreateDto;
-import ru.gigaden.calories_app.dto.UserResponseDto;
-import ru.gigaden.calories_app.dto.UserUpdateDto;
+import ru.gigaden.calories_app.dto.user.UserCreateDto;
+import ru.gigaden.calories_app.dto.user.UserResponseDto;
+import ru.gigaden.calories_app.dto.user.UserUpdateDto;
 import ru.gigaden.calories_app.entity.User;
 
 import java.util.Collection;

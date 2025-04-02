@@ -1,4 +1,4 @@
-package ru.gigaden.calories_app.dto;
+package ru.gigaden.calories_app.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -9,9 +9,9 @@ import ru.gigaden.calories_app.entity.enums.UserTarget;
 import ru.gigaden.calories_app.entity.enums.UsersActivity;
 
 /**
- * Дто для обновления пользователя
+ * Дто для создания пользователя
  */
-public record UserUpdateDto(@NotNull String name,
+public record UserCreateDto(@NotNull String name,
                             @NotNull Sex sex,
                             @Email String email,
                             @Positive @Max(value = 200) Integer age,

@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.gigaden.calories_app.dto.UserCreateDto;
-import ru.gigaden.calories_app.dto.UserResponseDto;
-import ru.gigaden.calories_app.dto.UserUpdateDto;
+import ru.gigaden.calories_app.dto.user.UserCreateDto;
+import ru.gigaden.calories_app.dto.user.UserResponseDto;
+import ru.gigaden.calories_app.dto.user.UserUpdateDto;
 import ru.gigaden.calories_app.entity.User;
 import ru.gigaden.calories_app.exception.EmailIsExistException;
 import ru.gigaden.calories_app.exception.UserNotFoundException;
@@ -15,7 +15,6 @@ import ru.gigaden.calories_app.repository.UserRepository;
 import ru.gigaden.calories_app.service.UserService;
 
 import java.util.Collection;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -90,7 +89,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public void checkUserIsExist(Long userId) {
         log.info("Проверяю существует ли пользователь с id = {}", userId);
-        if(!userRepository.existsUserById(userId)) {
+        if (!userRepository.existsUserById(userId)) {
             throw new UserNotFoundException("Пользователь не существует");
         }
     }

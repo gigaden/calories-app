@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.gigaden.calories_app.dto.UserCreateDto;
-import ru.gigaden.calories_app.dto.UserResponseDto;
-import ru.gigaden.calories_app.dto.UserUpdateDto;
+import ru.gigaden.calories_app.dto.user.UserCreateDto;
+import ru.gigaden.calories_app.dto.user.UserResponseDto;
+import ru.gigaden.calories_app.dto.user.UserUpdateDto;
 import ru.gigaden.calories_app.service.UserService;
 
 import java.util.Collection;
 
 /**
- * Класс содержит основные эндпоинты пользователял
- * */
+ * Класс содержит основные эндпоинты пользователя
+ */
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package ru.gigaden.calories_app.dto;
+package ru.gigaden.calories_app.dto.user;
 
 import ru.gigaden.calories_app.entity.enums.UserTarget;
 

@@ -22,13 +22,14 @@ import java.util.Map;
 @Slf4j
 public class ErrorHandler {
 
-    @ExceptionHandler
+    @ExceptionHandler({UserNotFoundException.class, DishNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> handleUserNotFound(final UserNotFoundException e, WebRequest request) {
+    public Map<String, String> handleUserNotFound(BaseNotFoundException e, WebRequest request) {
         log.error("Ошибка 404 NotFoundException: {} в запросе {}",
                 e.getMessage(), request.getDescription(false));
         return buildErrorResponse(e, HttpStatus.NOT_FOUND, e.getReason());
     }
+
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)

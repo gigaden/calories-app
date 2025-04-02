@@ -2,8 +2,8 @@ package ru.gigaden.calories_app.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import ru.gigaden.calories_app.dto.UserCreateDto;
-import ru.gigaden.calories_app.dto.UserResponseDto;
+import ru.gigaden.calories_app.dto.user.UserCreateDto;
+import ru.gigaden.calories_app.dto.user.UserResponseDto;
 import ru.gigaden.calories_app.entity.User;
 import ru.gigaden.calories_app.entity.enums.Sex;
 import ru.gigaden.calories_app.entity.enums.UsersActivity;
@@ -38,14 +38,14 @@ public interface UserMapper {
     default Double calculateBaseBmr(User user) {
         if (user.getSex() == Sex.MALE) {
             return 88.362
-                    + (13.397 * user.getWeight())
-                    + (4.799 * user.getHeight())
-                    - (5.677 * user.getAge());
+                   + (13.397 * user.getWeight())
+                   + (4.799 * user.getHeight())
+                   - (5.677 * user.getAge());
         } else {
             return 447.593
-                    + (9.247 * user.getWeight())
-                    + (3.098 * user.getHeight())
-                    - (4.330 * user.getAge());
+                   + (9.247 * user.getWeight())
+                   + (3.098 * user.getHeight())
+                   - (4.330 * user.getAge());
         }
     }
 
