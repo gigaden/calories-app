@@ -14,5 +14,6 @@ public record UserResponseDto(Long id,
                               Double weight,
                               Double height,
                               UserTarget target,
+                              Double bmr,
                               LocalDateTime createdOn) {
 }

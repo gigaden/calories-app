@@ -18,6 +18,9 @@
             <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="sex" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
             <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
@@ -30,9 +33,13 @@
             <column name="height" type="numeric">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_on" type="timestamp" defaultValueComputed="current_timestamp">
-            </column>
             <column name="target" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activity" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="timestamp" defaultValueComputed="current_timestamp">
             </column>
         </createTable>
     </changeSet>
