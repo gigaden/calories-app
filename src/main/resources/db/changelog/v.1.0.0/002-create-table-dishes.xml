@@ -4,35 +4,26 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
-        logicalFilePath="db/v.1.0.0/001-create-table-users.xml">
-    <changeSet id="001-create-schema" author="gigaden">
-        <sql>
-            CREATE SCHEMA IF NOT EXISTS entities
-        </sql>
-    </changeSet>
-    <changeSet id="001-create-table-users" author="gigaden">
-        <createTable tableName="users" schemaName="entities">
+        logicalFilePath="db/v.1.0.0/002-create-table-dishes.xml">
+    <changeSet id="002-create-table-dishes" author="gigaden">
+        <createTable tableName="dishes" schemaName="entities">
             <column name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="email" type="VARCHAR(255)">
+            <column name="calories" type="numeric">
                 <constraints nullable="false"/>
             </column>
-            <column name="age" type="INT">
+            <column name="proteins" type="numeric">
                 <constraints nullable="false"/>
             </column>
-            <column name="weight" type="numeric">
+            <column name="fats" type="numeric">
                 <constraints nullable="false"/>
             </column>
-            <column name="height" type="numeric">
+            <column name="carbohydrates" type="numeric">
                 <constraints nullable="false"/>
-            </column>
-            <column name="created_on" type="timestamp" defaultValueComputed="current_timestamp">
-            </column>
-            <column name="target" type="VARCHAR(255)">
             </column>
         </createTable>
     </changeSet>

@@ -6,4 +6,5 @@
     https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
         logicalFilePath="db/changelog.xml">
     <include file="v.1.0.0/001-create-table-users.xml" relativeToChangelogFile="true"/>
+    <include file="v.1.0.0/002-create-table-dishes.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

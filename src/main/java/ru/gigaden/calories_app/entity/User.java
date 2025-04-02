@@ -32,19 +32,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "age")
+    @Column(name = "age", nullable = false)
     private Integer age;
 
-    @Column(name = "weight")
+    @Column(name = "weight", nullable = false)
     private Double weight;
 
-    @Column(name = "height")
+    @Column(name = "height", nullable = false)
     private Double height;
 
     @Column(name = "created_on", insertable = false, updatable = false)
@@ -53,6 +53,6 @@ public class User {
     private LocalDateTime createdOn;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "target")
+    @Column(name = "target", nullable = false)
     private UserTarget target;
 }

@@ -22,6 +22,22 @@ import java.util.Map;
 @Slf4j
 public class ErrorHandler {
 
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> handleUserNotFound(final UserNotFoundException e, WebRequest request) {
+        log.error("Ошибка 404 NotFoundException: {} в запросе {}",
+                e.getMessage(), request.getDescription(false));
+        return buildErrorResponse(e, HttpStatus.NOT_FOUND, e.getReason());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public Map<String, String> handleEmailException(final EmailIsExistException e, WebRequest request) {
+        log.error("Ошибка 409 EmailIsExistException: {} в запросе {}",
+                e.getMessage(), request.getDescription(false));
+        return buildErrorResponse(e, HttpStatus.CONFLICT, e.getReason());
+    }
+
     @ExceptionHandler({MethodArgumentNotValidException.class,
             IllegalArgumentException.class,
             ValidationException.class,
