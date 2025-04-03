@@ -43,4 +43,11 @@ public interface DishService {
      * @param dishId - id блюда
      */
     void deleteDishById(Long dishId);
+
+    /**
+     * Метод проверяет существование блюда
+     *
+     * @param dishId - id блюда
+     */
+    void checkDishIsExist(Long dishId);
 }

@@ -22,12 +22,23 @@ import java.util.Map;
 @Slf4j
 public class ErrorHandler {
 
-    @ExceptionHandler({UserNotFoundException.class, DishNotFoundException.class})
+    @ExceptionHandler({
+            UserNotFoundException.class,
+            DishNotFoundException.class,
+            EatingNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> handleUserNotFound(BaseNotFoundException e, WebRequest request) {
         log.error("Ошибка 404 NotFoundException: {} в запросе {}",
                 e.getMessage(), request.getDescription(false));
         return buildErrorResponse(e, HttpStatus.NOT_FOUND, e.getReason());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> handleEatingValidationException(final EatingValidationException e, WebRequest request) {
+        log.error("Ошибка 403 EatingValidationException: {} в запросе {}",
+                e.getMessage(), request.getDescription(false));
+        return buildErrorResponse(e, HttpStatus.BAD_REQUEST, e.getReason());
     }
 
 

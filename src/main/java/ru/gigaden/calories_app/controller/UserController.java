@@ -33,7 +33,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    @Operation(summary = "Создание пользователя", description = "Позволяет добавит нового пользователя в БД")
+    @Operation(summary = "Создание пользователя", description = "Позволяет добавить нового пользователя в БД")
     public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody UserCreateDto dto) {
         UserResponseDto responseDto = userService.createUser(dto);
 

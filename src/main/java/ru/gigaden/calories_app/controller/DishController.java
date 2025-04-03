@@ -31,7 +31,7 @@ public class DishController {
     private final DishService dishService;
 
     @PostMapping
-    @Operation(summary = "Создание блюда", description = "Позволяет добавит новое блюдо в БД")
+    @Operation(summary = "Создание блюда", description = "Позволяет добавить новое блюдо в БД")
     public ResponseEntity<DishResponseDto> createDish(@Valid @RequestBody DishCreateDto dto) {
         DishResponseDto responseDto = dishService.createDish(dto);
 

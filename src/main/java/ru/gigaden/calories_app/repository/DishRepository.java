@@ -7,4 +7,6 @@ import ru.gigaden.calories_app.entity.Dish;
  * репа для блюд
  */
 public interface DishRepository extends JpaRepository<Dish, Long> {
+
+    boolean existsDishById(Long dishId);
 }

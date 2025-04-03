@@ -26,8 +26,12 @@ public interface EatingMapper {
 
     List<EatingDish> mapEatingDishCreateDtoListToEatingDish(List<EatingDishCreateDto> dtoList);
 
+    @Mapping(target = "userId", source = "user.id")
+    @Mapping(target = "mealItems", source = "mealItems")
     EatingResponseDto mapEatingToResponseDto(Eating eating);
 
+    @Mapping(target = "eatingId", source = "eating.id")
+    @Mapping(target = "dishId", source = "dish.id")
     EatingDishResponseDto mapEatingDishToResponseDto(EatingDish eatingDish);
 
     @Named("mapToDish")
