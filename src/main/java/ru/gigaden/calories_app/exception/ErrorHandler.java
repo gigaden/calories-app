@@ -41,6 +41,14 @@ public class ErrorHandler {
         return buildErrorResponse(e, HttpStatus.BAD_REQUEST, e.getReason());
     }
 
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> handleDatesPeriodValidationException(final DatesPeriodValidationException e, WebRequest request) {
+        log.error("Ошибка 403 DatesPeriodValidationException: {} в запросе {}",
+                e.getMessage(), request.getDescription(false));
+        return buildErrorResponse(e, HttpStatus.BAD_REQUEST, e.getReason());
+    }
+
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)

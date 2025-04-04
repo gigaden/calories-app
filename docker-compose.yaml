@@ -1,12 +1,12 @@
-version: '3.8'
-
 services:
   calories:
-    build: calories
-    image: calories
-    container_name: calories
+    build:
+      context: .
+      dockerfile:  Dockerfile
+    image: calories-app
+    container_name: calories-app
     ports:
-      - "8082:8082"
+      - "8080:8080"
     depends_on:
       calories-db:
         condition: service_healthy

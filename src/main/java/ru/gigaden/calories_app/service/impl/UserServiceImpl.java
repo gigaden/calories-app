@@ -8,6 +8,8 @@ import ru.gigaden.calories_app.dto.user.UserCreateDto;
 import ru.gigaden.calories_app.dto.user.UserResponseDto;
 import ru.gigaden.calories_app.dto.user.UserUpdateDto;
 import ru.gigaden.calories_app.entity.User;
+import ru.gigaden.calories_app.entity.enums.Sex;
+import ru.gigaden.calories_app.entity.enums.UsersActivity;
 import ru.gigaden.calories_app.exception.EmailIsExistException;
 import ru.gigaden.calories_app.exception.UserNotFoundException;
 import ru.gigaden.calories_app.mapper.UserMapper;
@@ -103,6 +105,41 @@ public class UserServiceImpl implements UserService {
             throw new EmailIsExistException("Не уникальный email");
         }
         log.info("Email уникален");
+    }
+
+    @Override
+    public Double calculateBMR(User user) {
+        double bmr = calculateBaseBmr(user);
+        bmr = calculateWithActivity(bmr, user.getActivity());
+
+        return switch (user.getTarget()) {
+            case WEIGHT_LOSS -> bmr * 0.85;
+            case WEIGHT_MAINTENANCE -> bmr;
+            case WEIGHT_GAIN -> bmr * 1.15;
+        };
+    }
+
+    private Double calculateBaseBmr(User user) {
+        if (user.getSex() == Sex.MALE) {
+            return 88.362
+                    + (13.397 * user.getWeight())
+                    + (4.799 * user.getHeight())
+                    - (5.677 * user.getAge());
+        } else {
+            return 447.593
+                    + (9.247 * user.getWeight())
+                    + (3.098 * user.getHeight())
+                    - (4.330 * user.getAge());
+        }
+    }
+
+    private Double calculateWithActivity(double bmr, UsersActivity activity) {
+        return switch (activity) {
+            case SEDENTARY -> bmr * 1.2;
+            case LIGHTLY_ACTIVE -> bmr * 1.375;
+            case MODERATELY_ACTIVE -> bmr * 1.55;
+            case VERY_ACTIVE -> bmr * 1.725;
+        };
     }
 
     private void setUsersFields(User oldUser, UserUpdateDto dto) {

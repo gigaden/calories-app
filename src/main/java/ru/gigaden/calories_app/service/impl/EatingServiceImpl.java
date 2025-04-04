@@ -17,7 +17,9 @@ import ru.gigaden.calories_app.repository.EatingRepository;
 import ru.gigaden.calories_app.service.DishService;
 import ru.gigaden.calories_app.service.EatingService;
 import ru.gigaden.calories_app.service.UserService;
+import ru.gigaden.calories_app.validator.Validator;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -87,6 +89,27 @@ public class EatingServiceImpl implements EatingService {
         Eating eating = getEatingById(eatingId);
         eatingRepository.delete(eating);
         log.info("Приём пищи с id = {} удалён", eatingId);
+    }
+
+    @Override
+    public Collection<Eating> getEatingPerCurrentDayByUserId(Long userId) {
+        userService.checkUserIsExist(userId);
+        log.info("Пытаюсь получить все приёмы пищи пользователя с id = {} за сегодняшний день", userId);
+        Collection<Eating> eatings = eatingRepository.findAllByDay(userId);
+        log.info("Все приёмы пищи пользователя с id = {} за сегодняшний день получены", userId);
+
+        return eatings;
+    }
+
+    @Override
+    public Collection<Eating> getEatingByPeriodAndUserId(Long userId, LocalDate from, LocalDate to) {
+        userService.checkUserIsExist(userId);
+        Validator.checkDates(from, to);
+        log.info("Пытаюсь получить все приёмы пищи пользователя с id = {} за период {} - {}", userId, from, to);
+        Collection<Eating> eatings = eatingRepository.findAllByPeriod(userId, from, to);
+        log.info("Все приёмы пищи пользователя с id = {} за период {} - {} получены", userId, from, to);
+
+        return eatings;
     }
 
     private void checkDishesIsCreate(List<EatingDishCreateDto> eatingDishes) {

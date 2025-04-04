@@ -22,7 +22,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/eatings")
 @RequiredArgsConstructor
-@Tag(name = "Приём пищи", description = "Контроллер управления приёмами пищи")
+@Tag(name = "Приёмы пищи", description = "Контроллер управления приёмами пищи")
 public class EatingController {
 
     private final EatingService eatingService;

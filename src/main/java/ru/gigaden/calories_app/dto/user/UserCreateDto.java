@@ -13,10 +13,10 @@ import ru.gigaden.calories_app.entity.enums.UsersActivity;
  */
 public record UserCreateDto(@NotNull String name,
                             @NotNull Sex sex,
-                            @Email String email,
+                            @NotNull @Email String email,
                             @Positive @Max(value = 200) Integer age,
-                            @Positive Double weight,
-                            @Positive Double height,
+                            @Positive @Max(value = 300) Double weight,
+                            @Positive @Max(value = 300) Double height,
                             @NotNull UserTarget target,
                             @NotNull UsersActivity activity) {
 }

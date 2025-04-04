@@ -8,7 +8,6 @@ import ru.gigaden.calories_app.dto.dish.DishCreateDto;
 import ru.gigaden.calories_app.dto.dish.DishResponseDto;
 import ru.gigaden.calories_app.entity.Dish;
 import ru.gigaden.calories_app.exception.DishNotFoundException;
-import ru.gigaden.calories_app.exception.UserNotFoundException;
 import ru.gigaden.calories_app.mapper.DishMapper;
 import ru.gigaden.calories_app.repository.DishRepository;
 import ru.gigaden.calories_app.service.DishService;

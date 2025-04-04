@@ -1,6 +1,10 @@
 spring:
   application:
     name: calories-app
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:6541/calories

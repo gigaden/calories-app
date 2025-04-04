@@ -66,4 +66,11 @@ public interface UserService {
      * @param email - email для проверки
      */
     void checkEmailIsExist(String email);
+
+    /**
+     * Метод вычисляет дневную норму калорий пользователя
+     *
+     * @param user - пользователь для вычисления
+     */
+    Double calculateBMR(User user);
 }
