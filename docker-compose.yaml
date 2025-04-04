@@ -1,0 +1,39 @@
+services:
+  calories:
+    build:
+      context: .
+      dockerfile:  Dockerfile
+    image: calories-app
+    container_name: calories-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      calories-db:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://calories-db:5432/calories
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=user
+    networks:
+      - calories-app
+
+  calories-db:
+    image: postgres:16.1
+    container_name: postgres-calories
+    ports:
+      - "6541:5432"
+    environment:
+      - POSTGRES_PASSWORD=user
+      - POSTGRES_USER=user
+      - POSTGRES_DB=calories
+    healthcheck:
+      test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
+      timeout: 5s
+      interval: 5s
+      retries: 10
+    networks:
+      - calories-app
+
+networks:
+  calories-app:
+    driver: bridge

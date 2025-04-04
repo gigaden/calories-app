@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        logicalFilePath="db/v.1.0.0/001-create-table-users.xml">
+    <changeSet id="001-create-schema" author="gigaden">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS entities
+        </sql>
+    </changeSet>
+    <changeSet id="001-create-table-users" author="gigaden">
+        <createTable tableName="users" schemaName="entities">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sex" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weight" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+            <column name="height" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+            <column name="target" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activity" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="timestamp" defaultValueComputed="current_timestamp">
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

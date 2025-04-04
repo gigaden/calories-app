@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        logicalFilePath="db/v.1.0.0/004-create-table-eating_dishes.xml">
+    <changeSet id="004-create-table-eating_dishes" author="gigaden">
+        <createTable tableName="eating_dishes" schemaName="entities">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="eating_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dish_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="portion_count" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_eating_dishes_eating"
+                                 baseTableName="eating_dishes"
+                                 baseColumnNames="eating_id"
+                                 referencedTableName="eatings"
+                                 referencedColumnNames="id"
+                                 baseTableSchemaName="entities"
+                                 referencedTableSchemaName="entities"/>
+        <addForeignKeyConstraint constraintName="fk_eating_dishes_dish"
+                                 baseTableName="eating_dishes"
+                                 baseColumnNames="dish_id"
+                                 referencedTableName="dishes"
+                                 referencedColumnNames="id"
+                                 baseTableSchemaName="entities"
+                                 referencedTableSchemaName="entities"/>
+    </changeSet>
+</databaseChangeLog>
